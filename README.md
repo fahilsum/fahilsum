@@ -1,12 +1,24 @@
-# 💫 About Me:
+# 💫 About Me 🐢:
 Hi! I'm **Muslih**, a student at **Bina Sarana Informatika University**  
 Currently learning and exploring programming, especially in web and Python-based projects.
 
 ## 🌐 Connect with me:
-[![Instagram](https://img.shields.io/badge/Instagram-%23E4405F.svg?logo=Instagram&logoColor=white)](https://instagram.com/fahilsum) 
+<div>
+  <a href="https://www.instagram.com/fahilsum/" target="_blank">
+    <img src="https://raw.githubusercontent.com/maurodesouza/profile-readme-generator/master/src/assets/icons/social/instagram/default.svg" width="52" height="40" alt="instagram logo"  />
+  </a>
+</div>
 
 ## 💻 Tech Stack:
-![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54) ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white) 
+<div align="left">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" height="40" alt="python logo"  />
+  <img width="12" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" height="40" alt="html5 logo"  />
+  <img width="12" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" height="40" alt="css logo"  />
+  <img width="12" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" height="40" alt="javascript logo"  />
+</div>
 
 ## 📊 GitHub Stats:
 <div align="center">
@@ -16,5 +28,12 @@ Currently learning and exploring programming, especially in web and Python-based
 ---
 
 <div align="center">
-  <img src="https://i.pinimg.com/736x/5c/a8/5c/5ca85ccea943438e4b9a1696d8480c66.jpg" width="550"/>
+  <img width="550" src="https://i.pinimg.com/736x/5c/a8/5c/5ca85ccea943438e4b9a1696d8480c66.jpg" />
+</div>
+
+
+---
+
+<div align="center">
+  <img src="https://raw.githubusercontent.com/fahilsum/fahilsum/output/snake.svg" alt="Snake animation" />
 </div>
