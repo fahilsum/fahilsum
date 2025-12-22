@@ -36,6 +36,5 @@ Currently learning and exploring programming, especially in web and Python-based
 
 ---
 
-<div align="center">
-  <img src="https://raw.githubusercontent.com/fahilsum/fahilsum/output/snake.svg" alt="Snake animation" />
-</div>
+![GitHub Snake](https://raw.githubusercontent.com/fahilsum/fahilsum/output/snake.svg?v=1)
+
