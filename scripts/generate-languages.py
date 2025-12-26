@@ -100,31 +100,60 @@ def calculate_percentages(language_bytes):
 # =========================
 # GENERATE SVG
 # =========================
-def generate_svg(languages):
-    max_width = 200
-    bar_height = 12
-    spacing = 22
+LANG_COLORS = {
+    "Python": "#3572A5",
+    "JavaScript": "#f1e05a",
+    "TypeScript": "#3178c6",
+    "HTML": "#e34c26",
+    "CSS": "#563d7c",
+    "Go": "#00ADD8",
+    "Java": "#b07219",
+    "C++": "#f34b7d",
+    "C": "#555555",
+    "Shell": "#89e051",
+}
 
-    height = 40 + spacing * len(languages)
+def generate_svg(languages):
+    width = 360
+    row_height = 22
+    padding = 16
+    bar_max = 140
+
+    height = padding * 2 + 30 + row_height * len(languages)
 
     svg = [
-        f'<svg width="420" height="{height}" xmlns="http://www.w3.org/2000/svg">',
+        f'<svg width="{width}" height="{height}" xmlns="http://www.w3.org/2000/svg">',
         '<style>',
-        'text { font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif; font-size: 12px; fill: #333; }',
+        'text { font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif; font-size: 12px; fill: #c9d1d9; }',
+        '.title { font-weight: 600; font-size: 14px; fill: #f0f6fc; }',
+        '.bg { fill: #0d1117; stroke: #30363d; rx: 10; }',
         '</style>',
-        '<text x="10" y="20" font-weight="bold">Most Used Languages</text>'
+
+        # card background
+        f'<rect x="0" y="0" width="{width}" height="{height}" class="bg" />',
+
+        # title
+        f'<text x="{padding}" y="{padding + 14}" class="title">Top Languages</text>',
     ]
 
-    y = 40
+    y = padding + 30
+
     for lang in languages:
-        width = (lang["percent"] / 100) * max_width
-        svg.append(f'<rect x="10" y="{y}" width="{width}" height="{bar_height}" rx="4" fill="#4c71f2" />')
-        svg.append(f'<text x="{max_width + 20}" y="{y + 10}">{lang["name"]} {lang["percent"]}%</text>')
-        y += spacing
+        percent = lang["percent"]
+        bar_width = (percent / 100) * bar_max
+        color = LANG_COLORS.get(lang["name"], "#8b949e")
+
+        svg.append(
+            f'<rect x="{padding}" y="{y}" width="{bar_width}" height="8" rx="4" fill="{color}" />'
+        )
+        svg.append(
+            f'<text x="{padding + bar_max + 10}" y="{y + 8}">{lang["name"]} {percent}%</text>'
+        )
+
+        y += row_height
 
     svg.append("</svg>")
     return "\n".join(svg)
-
 
 # =========================
 # MAIN
