@@ -2,7 +2,7 @@ name: Generate Language Stats
 
 on:
   schedule:
-    - cron: "0 0 * * *"   # jalan otomatis 1x sehari
+    - cron: "0 */12 * * *"   # jalan otomatis 12 jam sekali
   workflow_dispatch:      # bisa dijalankan manual
 
 jobs:
