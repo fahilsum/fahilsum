@@ -143,7 +143,7 @@ LANG_COLORS = {
 }
 
 def generate_svg(languages):
-    width = 330
+    width = 300
     bar_height = 8
     row_height = 18
     padding = 15
@@ -163,7 +163,7 @@ def generate_svg(languages):
         '<style>',
         'text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; font-size: 11px; fill: #c9d1d9; }',
         '.title { font-weight: 600; font-size: 14px; fill: #f0f6fc; }',
-        '.bg { fill: url(#bgGradient); stroke: #30363d; stroke-width: 1; rx: 6; }',
+        '.bg { fill: url(#bgGradient); stroke: #30363d; stroke-width: 4; rx: 6; }',
         '.bar { rx: 3; }',
         '.label { fill: #f0f6fc; font-weight: 500; }',
         '.percent { fill: #8b949e; }',
