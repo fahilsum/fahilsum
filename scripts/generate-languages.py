@@ -111,59 +111,95 @@ LANG_COLORS = {
     "C++": "#f34b7d",
     "C": "#555555",
     "Shell": "#89e051",
+    "Rust": "#000000",
+    "PHP": "#777BB4",
+    "Ruby": "#701516",
+    "Swift": "#fa7343",
+    "Kotlin": "#A97BFF",
+    "Dart": "#00B4AB",
+    "R": "#198CE7",
+    "Scala": "#c22d40",
+    "Lua": "#000080",
+    "Perl": "#0298c3",
+    "Haskell": "#5e5086",
+    "Elixir": "#6e4a7e",
+    "Clojure": "#db5855",
+    "Julia": "#a270ba",
+    "MATLAB": "#e16737",
+    "Objective-C": "#438eff",
+    "Vim Script": "#199f4b",
+    "PowerShell": "#012456",
+    "TeX": "#3D6117",
+    "Vue": "#4FC08D",
+    "Svelte": "#ff3e00",
+    "Assembly": "#6E4C13",
+    "Makefile": "#427819",
+    "Dockerfile": "#2496ED",
+    "YAML": "#cb171e",
+    "JSON": "#292929",
+    "XML": "#0060ac",
+    "Markdown": "#083fa1",
+    "Other": "#586069",
 }
 
 def generate_svg(languages):
-    width = 400  # Increased width for better spacing
-    row_height = 30  # Increased height for better readability
-    padding = 20
-    bar_max = 180  # Increased bar length
-    bar_height = 12  # Slightly taller bars
+    # Dimensions based on GitHub Readme Stats style
+    width = 400
+    bar_height = 8
+    row_height = 20
+    padding = 15
+    bar_max_width = 200  # Max width for bars
+    title_height = 30
 
-    height = padding * 2 + 40 + row_height * len(languages)  # Adjusted for title
+    height = padding * 2 + title_height + row_height * len(languages)
 
     svg = [
-        f'<svg width="{width}" height="{height}" xmlns="http://www.w3.org/2000/svg">',
+        f'<svg width="{width}" height="{height}" viewBox="0 0 {width} {height}" xmlns="http://www.w3.org/2000/svg">',
         '<defs>',
-        # Gradient for bars
-        '<linearGradient id="barGradient" x1="0%" y1="0%" x2="100%" y2="0%">',
-        '<stop offset="0%" style="stop-color:#58a6ff;stop-opacity:1" />',
-        '<stop offset="100%" style="stop-color:#1f6feb;stop-opacity:1" />',
+        # Gradient for background (react theme inspired)
+        '<linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">',
+        '<stop offset="0%" style="stop-color:#0d1117;stop-opacity:1" />',
+        '<stop offset="100%" style="stop-color:#161b22;stop-opacity:1" />',
         '</linearGradient>',
-        # Shadow filter
-        '<filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">',
-        '<feDropShadow dx="2" dy="2" stdDeviation="2" flood-color="#000000" flood-opacity="0.3"/>',
+        # Shadow for bars
+        '<filter id="barShadow" x="-20%" y="-20%" width="140%" height="140%">',
+        '<feDropShadow dx="1" dy="1" stdDeviation="1" flood-color="#000000" flood-opacity="0.2"/>',
         '</filter>',
         '</defs>',
         '<style>',
-        'text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; font-size: 12px; fill: #c9d1d9; }',
-        '.title { font-weight: 600; font-size: 16px; fill: #f0f6fc; }',
-        '.bg { fill: #0d1117; stroke: #30363d; stroke-width: 1; rx: 10; filter: url(#shadow); }',
-        '.bar { rx: 6; }',  # Rounded bars
+        'text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; font-size: 11px; fill: #c9d1d9; }',
+        '.title { font-weight: 600; font-size: 14px; fill: #f0f6fc; }',
+        '.bg { fill: url(#bgGradient); stroke: #30363d; stroke-width: 1; rx: 6; }',
+        '.bar { rx: 3; filter: url(#barShadow); }',
         '.label { fill: #f0f6fc; font-weight: 500; }',
+        '.percent { fill: #8b949e; }',
         '</style>',
 
-        # Card background with shadow
+        # Background card
         f'<rect x="0" y="0" width="{width}" height="{height}" class="bg" />',
 
         # Title
-        f'<text x="{padding}" y="{padding + 16}" class="title">Top Languages</text>',
+        f'<text x="{padding}" y="{padding + 12}" class="title">Most Used Languages</text>',
     ]
 
-    y = padding + 40  # Start below title
+    y = padding + title_height
 
     for lang in languages:
         percent = lang["percent"]
-        bar_width = (percent / 100) * bar_max
+        bar_width = (percent / 100) * bar_max_width
         color = LANG_COLORS.get(lang["name"], "#8b949e")
 
-        # Bar with gradient and shadow
+        # Bar
         svg.append(
-            f'<rect x="{padding}" y="{y + 4}" width="{bar_width}" height="{bar_height}" class="bar" fill="{color}" filter="url(#shadow)" />'
+            f'<rect x="{padding}" y="{y}" width="{bar_width}" height="{bar_height}" class="bar" fill="{color}" />'
         )
-        # Label
+        # Language name
         svg.append(
-            f'<text x="{padding + bar_max + 15}" y="{y + 12}" class="label">{lang["name"]} {percent}%</text>'
+            f'<text x="{padding + bar_max_width + 10}" y="{y + 7}" class="label">{lang["name"]}</text>'
+        )
+        # Percentage
+        svg.append(
+            f'<text x="{width - padding}" y="{y + 7}" text-anchor="end" class="percent">{percent}%</text>'
         )
 
         y += row_height
