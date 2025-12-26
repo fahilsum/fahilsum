@@ -143,12 +143,11 @@ LANG_COLORS = {
 }
 
 def generate_svg(languages):
-    # Dimensions closely matching GitHub Readme Stats compact layout
-    width = 400
+    width = 330
     bar_height = 8
-    row_height = 18  # Tighter spacing for compact feel
+    row_height = 18
     padding = 15
-    bar_max_width = 180  # Shorter bars for compact layout
+    bar_max_width = 140
     title_height = 25
 
     height = padding * 2 + title_height + row_height * len(languages)
@@ -156,7 +155,6 @@ def generate_svg(languages):
     svg = [
         f'<svg width="{width}" height="{height}" viewBox="0 0 {width} {height}" xmlns="http://www.w3.org/2000/svg">',
         '<defs>',
-        # Subtle gradient for background (react theme inspired, very close to example)
         '<linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">',
         '<stop offset="0%" style="stop-color:#0d1117;stop-opacity:1" />',
         '<stop offset="100%" style="stop-color:#161b22;stop-opacity:1" />',
@@ -166,15 +164,14 @@ def generate_svg(languages):
         'text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; font-size: 11px; fill: #c9d1d9; }',
         '.title { font-weight: 600; font-size: 14px; fill: #f0f6fc; }',
         '.bg { fill: url(#bgGradient); stroke: #30363d; stroke-width: 1; rx: 6; }',
-        '.bar { rx: 3; }',  # No shadow for cleaner look like the example
+        '.bar { rx: 3; }',
         '.label { fill: #f0f6fc; font-weight: 500; }',
         '.percent { fill: #8b949e; }',
+        '.track { fill: none; stroke: #30363d; stroke-width: 1; rx: 3; }' ,
         '</style>',
 
-        # Background card (no shadow for exact match)
         f'<rect x="0" y="0" width="{width}" height="{height}" class="bg" />',
 
-        # Title exactly as in example
         f'<text x="{padding}" y="{padding + 12}" class="title">Most Used Languages</text>',
     ]
 
@@ -185,9 +182,15 @@ def generate_svg(languages):
         bar_width = (percent / 100) * bar_max_width
         color = LANG_COLORS.get(lang["name"], "#8b949e")
 
-        # Bar (clean, no shadow)
+        # FULL TRACK (100%)
         svg.append(
-            f'<rect x="{padding}" y="{y}" width="{bar_width}" height="{bar_height}" class="bar" fill="{color}" />'
+            f'<rect x="{padding}" y="{y}" width="{bar_max_width}" height="{bar_height}" '
+            f'class="track" />'
+        )
+        # FILLED BAR (actual percentage)
+        svg.append(
+            f'<rect x="{padding}" y="{y}" width="{bar_width}" height="{bar_height}" '
+            f'class="bar" fill="{color}" rx="3" />'
         )
         # Language name (positioned right of bar, like example)
         svg.append(
