@@ -1,1 +1,38 @@
+name: Generate Language Stats
+
+on:
+  schedule:
+    - cron: "0 0 * * *"   # jalan otomatis 1x sehari
+  workflow_dispatch:      # bisa dijalankan manual
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          pip install requests
+
+      - name: Run language stats generator
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python generate-languages.py
+
+      - name: Commit and push SVG
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add stats/languages.svg
+          git commit -m "chore: update language stats" || echo "No changes to commit"
+          git push
 
