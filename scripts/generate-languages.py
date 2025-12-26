@@ -143,42 +143,38 @@ LANG_COLORS = {
 }
 
 def generate_svg(languages):
-    # Dimensions based on GitHub Readme Stats style
+    # Dimensions closely matching GitHub Readme Stats compact layout
     width = 400
     bar_height = 8
-    row_height = 20
+    row_height = 18  # Tighter spacing for compact feel
     padding = 15
-    bar_max_width = 200  # Max width for bars
-    title_height = 30
+    bar_max_width = 180  # Shorter bars for compact layout
+    title_height = 25
 
     height = padding * 2 + title_height + row_height * len(languages)
 
     svg = [
         f'<svg width="{width}" height="{height}" viewBox="0 0 {width} {height}" xmlns="http://www.w3.org/2000/svg">',
         '<defs>',
-        # Gradient for background (react theme inspired)
+        # Subtle gradient for background (react theme inspired, very close to example)
         '<linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">',
         '<stop offset="0%" style="stop-color:#0d1117;stop-opacity:1" />',
         '<stop offset="100%" style="stop-color:#161b22;stop-opacity:1" />',
         '</linearGradient>',
-        # Shadow for bars
-        '<filter id="barShadow" x="-20%" y="-20%" width="140%" height="140%">',
-        '<feDropShadow dx="1" dy="1" stdDeviation="1" flood-color="#000000" flood-opacity="0.2"/>',
-        '</filter>',
         '</defs>',
         '<style>',
         'text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; font-size: 11px; fill: #c9d1d9; }',
         '.title { font-weight: 600; font-size: 14px; fill: #f0f6fc; }',
         '.bg { fill: url(#bgGradient); stroke: #30363d; stroke-width: 1; rx: 6; }',
-        '.bar { rx: 3; filter: url(#barShadow); }',
+        '.bar { rx: 3; }',  # No shadow for cleaner look like the example
         '.label { fill: #f0f6fc; font-weight: 500; }',
         '.percent { fill: #8b949e; }',
         '</style>',
 
-        # Background card
+        # Background card (no shadow for exact match)
         f'<rect x="0" y="0" width="{width}" height="{height}" class="bg" />',
 
-        # Title
+        # Title exactly as in example
         f'<text x="{padding}" y="{padding + 12}" class="title">Most Used Languages</text>',
     ]
 
@@ -189,15 +185,15 @@ def generate_svg(languages):
         bar_width = (percent / 100) * bar_max_width
         color = LANG_COLORS.get(lang["name"], "#8b949e")
 
-        # Bar
+        # Bar (clean, no shadow)
         svg.append(
             f'<rect x="{padding}" y="{y}" width="{bar_width}" height="{bar_height}" class="bar" fill="{color}" />'
         )
-        # Language name
+        # Language name (positioned right of bar, like example)
         svg.append(
-            f'<text x="{padding + bar_max_width + 10}" y="{y + 7}" class="label">{lang["name"]}</text>'
+            f'<text x="{padding + bar_max_width + 8}" y="{y + 7}" class="label">{lang["name"]}</text>'
         )
-        # Percentage
+        # Percentage (right-aligned at end, like example)
         svg.append(
             f'<text x="{width - padding}" y="{y + 7}" text-anchor="end" class="percent">{percent}%</text>'
         )
