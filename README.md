@@ -24,8 +24,7 @@ Currently learning and exploring programming, especially in web and Python-based
 
 ## 📊 GitHub Stats:
 <div align="center">
-  <!-- <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=fahilsum&theme=react&hide_border=false&include_all_commits=false&count_private=false&layout=compact"/> -->
-  <img src="https://raw.githubusercontent.com/fahilsum/fahilsum/8a458edfc9964488ca0fc6f6778e7db25277abaa/stats/languages.svg"/>
+  <img src="https://raw.githubusercontent.com/fahilsum/fahilsum/main/stats/languages.svg"/>
 </div>
 
 ---
