@@ -17,19 +17,19 @@ text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Ar
 <rect x="0" y="0" width="300" height="127" class="bg" />
 <text x="15" y="27" class="title">Most Used Languages</text>
 <rect x="15" y="40" width="140" height="8" class="track" />
-<rect x="15" y="40" width="92.11999999999999" height="8" class="bar" fill="#f1e05a" rx="3" />
+<rect x="15" y="40" width="89.46000000000001" height="8" class="bar" fill="#f1e05a" rx="3" />
 <text x="163" y="47" class="label">JavaScript</text>
-<text x="285" y="47" text-anchor="end" class="percent">65.8%</text>
+<text x="285" y="47" text-anchor="end" class="percent">63.9%</text>
 <rect x="15" y="58" width="140" height="8" class="track" />
-<rect x="15" y="58" width="31.64" height="8" class="bar" fill="#e34c26" rx="3" />
+<rect x="15" y="58" width="34.72" height="8" class="bar" fill="#e34c26" rx="3" />
 <text x="163" y="65" class="label">HTML</text>
-<text x="285" y="65" text-anchor="end" class="percent">22.6%</text>
+<text x="285" y="65" text-anchor="end" class="percent">24.8%</text>
 <rect x="15" y="76" width="140" height="8" class="track" />
-<rect x="15" y="76" width="8.96" height="8" class="bar" fill="#563d7c" rx="3" />
+<rect x="15" y="76" width="8.68" height="8" class="bar" fill="#563d7c" rx="3" />
 <text x="163" y="83" class="label">CSS</text>
-<text x="285" y="83" text-anchor="end" class="percent">6.4%</text>
+<text x="285" y="83" text-anchor="end" class="percent">6.2%</text>
 <rect x="15" y="94" width="140" height="8" class="track" />
-<rect x="15" y="94" width="7.28" height="8" class="bar" fill="#3572A5" rx="3" />
+<rect x="15" y="94" width="7.14" height="8" class="bar" fill="#3572A5" rx="3" />
 <text x="163" y="101" class="label">Python</text>
-<text x="285" y="101" text-anchor="end" class="percent">5.2%</text>
+<text x="285" y="101" text-anchor="end" class="percent">5.1%</text>
 </svg>
